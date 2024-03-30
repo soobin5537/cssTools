@@ -38,6 +38,7 @@ CSS를 처음 접하였을때 `gradient, box-shadow, filter option` 를 시각�
 1. `npm init` (node.js 프로젝트 초기화)
 2. `npm i --save-dev electron` (electron을 설치)
 3. `npm start` 또는 `npm run pack` (npm start는 해당 앱을 실행, npm run pack은 해당 앱을 배포하기위한 exe 파일 생성)
+4. dist 폴더 경로로 이동하여 .exe 확장자 파일을 배포, 설치하면 이용 할 수 있다.
 
 ## 📷 앱 사진
 ![image](https://github.com/soobin5537/cssTools/assets/130532901/059e115e-4d46-4cd0-9b25-b9ec396f14af)
