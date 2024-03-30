@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="./images/logo.ico">
+
+    <!-- darkMode test -->
+    <!-- <link rel="stylesheet" href="./css/dark.css"> -->
+    <!-- main css -->
+    <link rel="stylesheet" id="darkMode" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="./script/vue.js"></script>
+    <script src="./script/jquery-3.6.4.js"></script>
+    <script defer src="./script/script.js"></script>
+
+    <title>devTools</title>
+</head>
+
+<body>
+
+    <header>
+        <h1><a href="#">DevTools</a></h1>
+        <h2><a href="#" id="openUiMenu"></a></h2>
+    </header>
+
+    <div id="uiMenu">
+        <div class="header">
+            <h1>UI SETTING</h1>
+            <a href="#" id="uiReset"><i class="fas fa-solid fa-retweet"></i></a>
+        </div>
+        <div class="setting">
+            <div>
+                <span>
+                    <i class="fas fa-solid fa-moon"></i>
+                    다크모드
+                </span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="switchBar"></span>
+                </label>
+            </div>
+            <div>
+                <span>
+                    <i class="fas fa-solid fa-font"></i>
+                    폰트사이즈 (<span id="size">14</span>px)
+                </span>
+                <label class="range">
+                    <input type="range" id="fontSize" min="10" max="30" step="1" value="14">
+                </label>
+            </div>
+        </div>
+    </div>
+    <p class="channelName">
+        <span>그라데이션 설정</span>
+    </p>
+    <section id="gradientTool">
+        <div id="gradientBg"></div>
+        <div id="controls">
+            <div id="color">
+                <p>
+                    <span>색상</span>
+                    <span id="warningMsg"></span>
+                </p>
+                <div id="inputBox">
+                    <div class="colorInput">
+                        <input type="color" class="gdColor" id="randomColor1" value="#fad0c4">
+                        <input type="number" class="percent" min="0" max="100" value="0">
+                    </div>
+                    <div class="colorInput">
+                        <input type="color" class="gdColor" id="randomColor2" value="#ffd1ff">
+                        <input type="number" class="percent" min="0" max="100" value="100">
+                    </div>
+                </div>
+                <button id="addColorBtn">추가</button>
+                <button id="randomBtn">랜덤</button>
+            </div>
+            <label for="">
+                <p>
+                    <span>각도(deg)</span>
+                    <span id="warningMsg2"></span>
+                </p>
+                <input type="number" class="angleInput" min="0" max="360" value="0">
+            </label>
+            <div class="lastBox">
+                <button id="applyBtn">적용</button>
+                <p id="gradientText"></p>
+                <span id="gradientCopy">copy</span>
+            </div>
+        </div>
+    </section>
+
+    <p class="channelName">
+        <span>박스셰도우 설정</span>
+    </p>
+    <section id="boxshadowTool">
+        <div id="boxshadowBox"></div>
+        <div id="boxShadow">
+            <div>
+                <label>
+                    <span>배경 색</span>
+                    <!-- darkmodeTest -->
+                    <!-- <input type="color" id="bgcolor" value="#000000"> -->
+                    <input type="color" id="bgcolor" value="#ffffff">
+                </label>
+                <label>
+                    <span>그림자 색</span>
+                    <!-- darkmodeTest -->
+                    <!-- <input type="color" id="color2" value="#ffffff"> -->
+                    <input type="color" id="color2" value="#000000">
+                </label>
+                <label>
+                    <span>불투명도</span>
+                    <input type="range" id="colorAlphaRange" min="0" max="1" step="0.01" value="0.1">
+                    <input type="number" id="colorAlphaNumber" min="0" max="1" step="0.01" value="0.1">
+                </label>
+            </div>
+            <div id="hv">
+                <label>
+                    <span>수평</span>
+                    <input type="range" id="hRange" min="-100" max="100" value="0">
+                    <input type="number" id="hNumber" min="-100" max="100" value="0">
+                </label>
+                <label>
+                    <span>수직</span>
+                    <input type="range" id="vRange" min="-100" max="100" value="0">
+                    <input type="number" id="vNumber" min="-100" max="100" value="0">
+                </label>
+            </div>
+            <div id="bs">
+                <label>
+                    <span>흐림</span>
+                    <input type="range" id="blurRange" min="0" max="100" value="0">
+                    <input type="number" id="blurNumber" min="0" max="100" value="0">
+                </label>
+                <label>
+                    <span>확장</span>
+                    <input type="range" id="spreadRange" min="0" max="100" value="0">
+                    <input type="number" id="spreadNumber" min="0" max="100" value="0">
+                </label>
+            </div>
+            <div class="lastBox">
+                <p id="boxshadowText"></p>
+                <span id="boxShadowCopy">copy</span>
+            </div>
+        </div>
+    </section>
+
+    <p class="channelName">
+        <span>필터 설정</span>
+    </p>
+    <section id="filterTool">
+        <div id="filterBox"><img :src="imgSrc" :alt="imgAlt"></div>
+        <div id="filter">
+            <div class="effect">
+                <p>
+                    <span>{{mainTitle}}</span>
+                    <span id="warningMsg3">{{warningMsg3}}</span>
+                </p>
+                <label v-for="input in inputs">
+                    <span>{{input.title}}</span>
+                    <input :type="input.type" :id="input.id" :name="input.name" :value="input.value"
+                        :checked="input.checked">
+                </label>
+            </div>
+            <div class="lastBox">
+                <p id="filterValue">{{filterValue}}</p>
+                <span id="filterCopy">{{copy}}</span>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

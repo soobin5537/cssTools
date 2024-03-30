@@ -1,0 +1,707 @@
+@charset "utf-8";
+/* 다시 할거 */
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* transition: 1s; */
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+    --mainBgColor: #151515;
+    --mainColor: #ffffff;
+    --subColor: #eeeeee;
+    --borderColor: rgba(255, 255, 255, 0.2);
+    --scrollColor: rgba(70, 70, 70, 0.3);
+    --inputColor: #999999;
+    --buttonColor: #262626;
+}
+
+body {
+    width: 100%;
+    /* height: 100vh; */
+    background: var(--mainBgColor);
+    overflow-y: scroll;
+    transition: 0.2s;
+    user-select: none;
+    color: #ffffff;
+}
+
+body,
+html {
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+    width: 3px;
+}
+
+body:hover::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--scrollColor)
+}
+
+body::-webkit-scrollbar-track {
+    background: none;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    border-bottom: 2px solid var(--borderColor);
+    margin-bottom: 10px;
+    display: flex;
+}
+
+header>h1>a {
+    margin-left: 30px;
+    color: var(--mainColor);
+    font: bold 16px/60px "Pretendard-Regular";
+}
+
+header>h2 {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 20px;
+}
+
+header>h2>a {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/setting3.png");
+    background-position: 50% 50%;
+    background-size: cover;
+    transition: 0.1s;
+}
+
+/* header>h2>a:hover {
+    background-image: url("../images/setting.png");
+    transform: scale(1.1);
+} */
+
+#uiMenu {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    width: 400px;
+    background: var(--mainBgColor);
+    border: 2px solid var(--borderColor);
+    border-radius: 10px;
+    z-index: 99;
+}
+
+#uiMenu .header {
+    width: 100%;
+    padding: 9px 15px;
+    border-bottom: 1px solid var(--borderColor);
+    display: flex;
+}
+
+#uiMenu .header>h1 {
+    padding: 6px 5px;
+    font: bold 16px/1 "Pretendard-Regular";
+}
+
+#uiMenu .header>a {
+    margin-left: auto;
+    color: #111;
+    font: bold 16px/1 "Pretendard-Regular";
+    padding: 6px 5px;
+    border-radius: 50%;
+}
+
+#uiMenu .header>a:hover {
+    background: #dddddd;
+}
+
+#uiMenu .setting {
+    width: 100%;
+    padding: 15px;
+}
+
+#uiMenu .setting>div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#uiMenu .setting>div:last-child {
+    margin-bottom: 0;
+}
+
+#uiMenu .setting>div>span {
+    flex: 1;
+    font: bold 15px/1 "Pretendard-Regular";
+}
+
+#uiMenu .setting>div>span>i {
+    margin-right: 3px;
+}
+
+#uiMenu .setting>div>label.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 21px;
+}
+
+#uiMenu .setting>div>label.switch>input {
+    display: none;
+}
+
+#uiMenu .setting>div>label.switch .switchBar {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--mainBgColor);
+    border: 1px solid var(--borderColor);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+#uiMenu .setting>div>label.switch .switchBar:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+#uiMenu .setting>div>label.switch>input:checked+.switchBar {
+    background-color: #2196F3;
+}
+
+#uiMenu .setting>div>label.switch>input:checked+.switchBar:before {
+    transform: translateX(21px);
+}
+
+#uiMenu .setting>div>label.switch .switchBar {
+    border-radius: 30px;
+}
+
+#uiMenu .setting>div>label.switch .switchBar:before {
+    border-radius: 50%;
+}
+
+#uiMenu .setting>div>label.range>input[type=range] {
+    appearance: none;
+    outline: none;
+    width: 100%;
+    padding: 2px 0;
+    border-radius: 5px;
+    background-color: var(--mainBgColor);
+    border: 1px solid var(--borderColor);
+}
+
+.channelName {
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+    max-width: 1200px;
+    padding: 10px 0 20px;
+    letter-spacing: -0.4px;
+    color: var(--mainColor);
+    font: bold 18px/1 "Pretendard-Regular";
+}
+
+#gradientTool {
+    margin: 0 auto 20px;
+    width: 95%;
+    max-width: 1200px;
+    padding: 30px 30px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+}
+
+#gradientTool #gradientBg {
+    width: 320px;
+    height: 180px;
+    border-radius: 10px;
+}
+
+#gradientTool #controls {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
+}
+
+#gradientTool #controls #color {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-top: 30px;
+}
+
+#gradientTool #controls #color>p {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: var(--mainColor);
+    font: bold 15px/1 "Pretendard-Regular";
+}
+
+#gradientTool #controls #color>p>span:last-child {
+    color: rgb(255, 130, 130);
+    font: bold 13px/1 "Pretendard-Regular";
+}
+
+#gradientTool #controls #color #inputBox {
+    display: flex;
+}
+
+#gradientTool #controls #color #inputBox .colorInput {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+}
+
+#gradientTool #controls #color #inputBox .colorInput>input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 40px;
+    border-radius: 3px;
+    margin: 0 2px;
+    letter-spacing: -0.4px;
+    color: var(--inputColor);
+    font: bold 13px/1 "Pretendard-Regular";
+}
+
+#gradientTool #controls #color #inputBox .colorInput>input::-webkit-color-swatch {
+    border: none;
+    border-radius: 3px;
+}
+
+#gradientTool #controls #color #inputBox .colorInput>input:nth-child(2) {
+    border: 1px solid var(--borderColor);
+    background: none;
+    width: 60px;
+    height: 32px;
+    padding: 0 5px;
+}
+
+#gradientTool #controls #color #inputBox .colorInput #removeBtn {
+    border: none;
+    outline: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 3px;
+    background: #ff8484;
+    color: #ffffff;
+    font: bold 13px/32px "Pretendard-Regular";
+    cursor: pointer;
+}
+
+#gradientTool #controls #addColorBtn,
+#gradientTool #controls #randomBtn {
+    position: relative;
+    border: none;
+    outline: none;
+    width: 50px;
+    height: 32px;
+    border-radius: 3px;
+    background: var(--buttonColor);
+    color: #ffffff;
+    font: bold 13px/32px "Pretendard-Regular";
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#gradientTool #controls #randomBtn::before {
+    content: "첫 2개의 색상코드를 랜덤으로 변경합니다!";
+    display: none;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: -40px;
+    width: 250px;
+    height: 25px;
+    line-height: 25px;
+    color: #777777;
+    border: 2px solid var(--borderColor);
+    border-radius: 5px;
+    background: transparent;
+}
+
+#gradientTool #controls #randomBtn:hover::before {
+    display: block;
+}
+
+#gradientTool #controls #addColorBtn:hover,
+#gradientTool #controls #randomBtn:hover {
+    background: #363636;
+}
+
+#gradientTool #controls>label {
+    flex: 0.4;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-top: 35px;
+}
+
+#gradientTool #controls>label>p {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #ffffff;
+    font: bold 15px/1 "Pretendard-Regular";
+}
+
+#gradientTool #controls>label>p>span:last-child {
+    color: rgb(255, 130, 130);
+    font: bold 13px/1 "Pretendard-Regular";
+}
+
+#gradientTool #controls>label>input {
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    border-radius: 3px;
+    padding: 3px 5px;
+    color: var(--inputColor);
+    background: none;
+    border: 1px solid var(--borderColor);
+    font: bold 13px/1 "Pretendard-Regular";
+}
+
+#gradientTool #controls .lastBox {
+    flex: 1;
+    display: flex;
+    align-items: end;
+    width: 100%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+#gradientTool #controls .lastBox>span {
+    width: 70px;
+    margin-left: 2.5px;
+    border-radius: 3px;
+    background: var(--buttonColor);
+    padding: 7px 0;
+    color: #ffffff;
+    text-align: center;
+    font: bold 13px/1 "Pretendard-Regular";
+    cursor: pointer;
+}
+
+#gradientTool #controls .lastBox #applyBtn {
+    flex: 1;
+    border: none;
+    outline: none;
+    width: 50px;
+    height: 28px;
+    border-radius: 3px;
+    background: var(--buttonColor);
+    color: #ffffff;
+    font: bold 13px/28px "Pretendard-Regular";
+    cursor: pointer;
+}
+
+#gradientTool #controls .lastBox #gradientText {
+    flex: 9;
+    display: block;
+    height: 27px;
+    background: #333333;
+    border-radius: 3px;
+    color: #ffffff;
+    font: bold 13px/27px "Pretendard-Regular";
+    margin-left: 5px;
+    padding: 0 10px;
+    cursor: text;
+    user-select: text;
+}
+
+#boxshadowTool {
+    margin: 0 auto 20px;
+    width: 95%;
+    max-width: 1200px;
+    padding: 30px 30px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+}
+
+#boxshadowTool #boxshadowBox {
+    width: 320px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+#boxshadowTool #boxShadow {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
+}
+
+#boxshadowTool #boxShadow>div {
+    display: flex;
+    width: 100%;
+    padding: 1px 10px;
+}
+
+#boxshadowTool #boxShadow>div>label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    font: bold 15px/1 "Pretendard-Regular";
+    padding-top: 22px;
+}
+
+#boxshadowTool #boxShadow>div>label:first-child {
+    margin-right: 10px;
+}
+
+#boxshadowTool #boxShadow>div>label>span {
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    display: block;
+}
+
+#boxshadowTool #boxShadow>div>label>input[type=range] {
+    flex: 4;
+    appearance: none;
+    outline: none;
+    width: 100%;
+    padding: 2px 0;
+    border-radius: 5px;
+    border: 1px solid var(--borderColor);
+    background: none;
+}
+
+#boxshadowTool #boxShadow>div>label>input[type=range]::-webkit-switchBar-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    background: rgb(168, 168, 255);
+    cursor: pointer;
+}
+
+#boxshadowTool #boxShadow>div>label>input[type=number] {
+    width: 90px;
+    margin-left: 10px;
+    border-radius: 3px;
+    border: 1px solid var(--borderColor);
+    outline: none;
+    background: none;
+    padding: 4px 5px;
+    color: var(--inputColor);
+    font: bold 13px/1 "Pretendard-Regular";
+}
+
+#boxshadowTool #boxShadow>div>label>input[type=color] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 70%;
+    border: none;
+    outline: none;
+    height: 37px;
+    border-radius: 3px;
+    letter-spacing: -0.4px;
+    color: #777777;
+    background: transparent;
+    padding: 0;
+    font: bold 13px/1 "Pretendard-Regular";
+}
+
+#boxshadowTool #boxShadow>div>label>input[type=color]::-webkit-color-swatch {
+    border: none;
+    border-radius: 3px;
+}
+
+#boxshadowTool #boxShadow .lastBox {
+    margin-top: 9px;
+    display: flex;
+    align-items: flex-end;
+}
+
+#boxshadowTool #boxShadow .lastBox>span {
+    width: 70px;
+    margin-left: 3px;
+    border-radius: 3px;
+    background: var(--buttonColor);
+    padding: 7px 0;
+    color: #ffffff;
+    text-align: center;
+    font: bold 13px/1 "Pretendard-Regular";
+    cursor: pointer;
+}
+
+#boxshadowTool #boxShadow #boxshadowText {
+    flex: 8;
+    display: block;
+    height: 27px;
+    background: #333333;
+    border-radius: 3px;
+    color: #ffffff;
+    font: bold 13px/27px "Pretendard-Regular";
+    margin-left: 5px;
+    padding: 0 10px;
+    cursor: text;
+    user-select: text;
+}
+
+#filterTool {
+    margin: 0 auto 20px;
+    width: 95%;
+    max-width: 1200px;
+    padding: 30px 30px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+}
+
+#filterTool #filterBox {
+    width: 320px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#filterTool #filterBox>img {
+    height: 70%;
+}
+
+#filterTool #filter {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 30px;
+}
+
+#filterTool #filter .effect {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    padding-top: 40px;
+}
+
+#filterTool #filter .effect>p {
+    position: absolute;
+    /* left: 10px; */
+    top: 10px;
+    font: bold 15px/1 "Pretendard-Regular";
+}
+
+#filterTool #filter .effect>p>span:last-child {
+    color: rgb(255, 130, 130);
+    font: bold 13px/1 "Pretendard-Regular";
+}
+
+#filterTool #filter .effect>label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    padding: 0 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#filterTool #filter .effect>label>span {
+    display: block;
+    color: #555555;
+    font: bold 13px/1 "Pretendard-Regular";
+}
+
+#filterTool #filter .effect>label>input {
+    position: absolute;
+    background-color: transparent;
+    appearance: none;
+    border: 1px solid var(--borderColor);
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#filterTool #filter .effect>label>input:checked {
+    z-index: -1;
+    border: 2px solid var(--borderColor);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+#filterTool #filter .lastBox {
+    flex: 1;
+    display: flex;
+    align-items: end;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+#filterTool #filter .lastBox>span {
+    width: 70px;
+    border-radius: 3px;
+    background: var(--buttonColor);
+    padding: 7px 0;
+    color: #ffffff;
+    text-align: center;
+    margin-left: 5px;
+    font: bold 13px/1 "Pretendard-Regular";
+    cursor: pointer;
+}
+
+#filterTool #filter .lastBox #filterValue {
+    flex: 9;
+    display: block;
+    height: 27px;
+    background: #333333;
+    border-radius: 3px;
+    color: #ffffff;
+    font: bold 13px/27px "Pretendard-Regular";
+    margin-left: 5px;
+    padding: 0 10px;
+    cursor: text;
+    user-select: text;
+}
